@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StudentHub</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+<!-- =================================
+     SIDEBAR
+================================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            🎓
+        </div>
+
+        <div>
+            <h2>StudentHub</h2>
+            <span>Management</span>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="#" class="nav-item active">
+            <span>📊</span>
+            Dashboard
+        </a>
+
+        <a href="#students" class="nav-item">
+            <span>👨‍🎓</span>
+            Students
+        </a>
+
+        <a href="#add" class="nav-item">
+            <span>➕</span>
+            Add Student
+        </a>
+
+        <a href="#profile" class="nav-item">
+            <span>🌐</span>
+            API Profile
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="online">
+
+            <span></span>
+
+            API Connected
+
+        </div>
+
+        <p>
+            Student Management System
+        </p>
+
+    </div>
+
+</aside>
+
+
+<!-- =================================
+     MAIN
+================================= -->
+
+<main class="main">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="welcome">
+                Welcome back 👋
+            </p>
+
+            <h1>
+                Student Dashboard
+            </h1>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <div class="date-box">
+                📅
+                <span id="currentDate"></span>
+            </div>
+
+            <div class="avatar">
+                👨‍💻
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         STATISTICS
+    ================================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-content">
+
+                <span class="stat-title">
+                    Total Students
+                </span>
+
+                <h2 id="totalStudents">
+                    0
+                </h2>
+
+                <small>
+                    Registered students
+                </small>
+
+            </div>
+
+            <div class="stat-icon purple">
+                👨‍🎓
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-content">
+
+                <span class="stat-title">
+                    Average Marks
+                </span>
+
+                <h2 id="averageMarks">
+                    0
+                </h2>
+
+                <small>
+                    Overall performance
+                </small>
+
+            </div>
+
+            <div class="stat-icon blue">
+                📈
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-content">
+
+                <span class="stat-title">
+                    Top Students
+                </span>
+
+                <h2 id="topStudents">
+                    0
+                </h2>
+
+                <small>
+                    Students above 90
+                </small>
+
+            </div>
+
+            <div class="stat-icon orange">
+                🏆
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-content">
+
+                <span class="stat-title">
+                    Courses
+                </span>
+
+                <h2 id="totalCourses">
+                    0
+                </h2>
+
+                <small>
+                    Active courses
+                </small>
+
+            </div>
+
+            <div class="stat-icon green">
+                📚
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         ADD STUDENT
+    ================================= -->
+
+    <section
+        class="card"
+        id="add"
+    >
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="section-tag">
+                    STUDENT MANAGEMENT
+                </span>
+
+                <h2>
+                    Add New Student
+                </h2>
+
+                <p>
+                    Enter student information below.
+                </p>
+
+            </div>
+
+            <div class="header-icon">
+                ✨
+            </div>
+
+        </div>
+
+
+        <form id="studentForm">
+
+            <input
+                type="hidden"
+                id="studentId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <div class="input-group">
+
+                    <label>
+                        Student Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span>👤</span>
+
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter student name"
+                        >
+
+                    </div>
+
+                    <small id="nameError"></small>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span>✉️</span>
+
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="student@example.com"
+                        >
+
+                    </div>
+
+                    <small id="emailError"></small>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Course
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span>📚</span>
+
+                        <select id="studentCourse">
+
+                            <option value="">
+                                Select course
+                            </option>
+
+                            <option value="Computer Science">
+                                Computer Science
+                            </option>
+
+                            <option value="Information Technology">
+                                Information Technology
+                            </option>
+
+                            <option value="Mechanical">
+                                Mechanical
+                            </option>
+
+                            <option value="Civil">
+                                Civil
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <small id="courseError"></small>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Marks
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span>📊</span>
+
+                        <input
+                            type="number"
+                            id="studentMarks"
+                            min="0"
+                            max="100"
+                            placeholder="0 - 100"
+                        >
+
+                    </div>
+
+                    <small id="marksError"></small>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn primary-btn"
+                    id="submitButton"
+                >
+                    <span>➕</span>
+                    Add Student
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn cancel-btn hidden"
+                    id="cancelEdit"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =================================
+         API PROFILE
+    ================================= -->
+
+    <section
+        class="card api-section"
+        id="profile"
+    >
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="section-tag">
+                    FETCH API
+                </span>
+
+                <h2>
+                    Student Profile
+                </h2>
+
+                <p>
+                    Click a student name to view their profile.
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn api-btn"
+                id="loadApiStudent"
+            >
+                🔄 Random Student
+            </button>
+
+        </div>
+
+
+        <!-- Loading -->
+
+        <div
+            id="apiLoading"
+            class="api-message loading hidden"
+        >
+            <div class="spinner"></div>
+            Loading student profile...
+        </div>
+
+
+        <!-- Error -->
+
+        <div
+            id="apiError"
+            class="api-message error hidden"
+        >
+            ❌ Unable to load profile.
+        </div>
+
+
+        <!-- Empty -->
+
+        <div
+            id="profileEmpty"
+            class="profile-empty"
+        >
+
+            <div class="empty-avatar">
+                👤
+            </div>
+
+            <h3>
+                Select a Student
+            </h3>
+
+            <p>
+                Click a student's name below
+                to display their API profile.
+            </p>
+
+        </div>
+
+
+        <!-- Profile -->
+
+        <div
+            id="profileContainer"
+            class="profile-container hidden"
+        >
+
+            <div class="profile-photo">
+
+                <div class="photo-ring">
+
+                    <img
+                        id="profileImage"
+                        src=""
+                        alt="Student"
+                    >
+
+                </div>
+
+                <span class="verified">
+                    ✓ API
+                </span>
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <span class="profile-label">
+                    SELECTED STUDENT
+                </span>
+
+                <h2 id="profileName">
+                    Student Name
+                </h2>
+
+
+                <div class="profile-details">
+
+                    <div class="detail">
+
+                        <div class="detail-icon">
+                            ✉️
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Email
+                            </span>
+
+                            <strong id="profileEmail">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <div class="detail-icon">
+                            🌍
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Country
+                            </span>
+
+                            <strong id="profileCountry">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="api-success">
+                    ✓ Profile connected with API
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         STUDENTS
+    ================================= -->
+
+    <section
+        class="card"
+        id="students"
+    >
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="section-tag">
+                    STUDENT DIRECTORY
+                </span>
+
+                <h2>
+                    All Students
+                </h2>
+
+                <p>
+                    Manage and view your students.
+                </p>
+
+            </div>
+
+
+            <span
+                class="record-count"
+                id="recordCount"
+            >
+                0 Students
+            </span>
+
+        </div>
+
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+
+            <div class="search-wrapper">
+
+                <span>
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="Search student..."
+                >
+
+            </div>
+
+
+            <div class="select-wrapper">
+
+                <span>
+                    📚
+                </span>
+
+                <select id="courseFilter">
+
+                    <option value="All Courses">
+                        All Courses
+                    </option>
+
+                    <option value="Computer Science">
+                        Computer Science
+                    </option>
+
+                    <option value="Information Technology">
+                        Information Technology
+                    </option>
+
+                    <option value="Mechanical">
+                        Mechanical
+                    </option>
+
+                    <option value="Civil">
+                        Civil
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="clear-btn"
+                id="clearFilters"
+            >
+                Clear Filters
+            </button>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Student
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Course
+                        </th>
+
+                        <th>
+                            Marks
+                        </th>
+
+                        <th>
+                            Grade
+                        </th>
+
+                        <th>
+                            Source
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="studentTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div
+            id="emptyState"
+            class="empty-state hidden"
+        >
+
+            <div>
+                🔍
+            </div>
+
+            <h3>
+                No students found
+            </h3>
+
+            <p>
+                Try changing your search or filter.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="js/main.js"
+></script>
+
+</body>
+
+</html>
